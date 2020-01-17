@@ -36,6 +36,7 @@ public class EyeBehaviour : MonoBehaviour
     void Start()
     {
         eyeTracker.GazeDataReceived += GazeDataReceivedFromTracker;
+        Cursor.visible = true;
     }
 
     // Update is called once per frame
@@ -76,7 +77,7 @@ public class EyeBehaviour : MonoBehaviour
         //var position = Camera.main.ScreenToWorldPoint(new Vector3(combinedEyeGazePoint.x, 1 - combinedEyeGazePoint.y, 10));
 
         var combinedEyeGazePoint = (ToVector2(e.LeftEye.GazePoint.PositionOnDisplayArea) + ToVector2(e.RightEye.GazePoint.PositionOnDisplayArea)) / 2f;
-        var position = Camera.main.WorldToScreenPoint(new Vector3(3 * combinedEyeGazePoint.x, 3 * (1 - combinedEyeGazePoint.y), 0));
+        var position = Camera.main.ScreenToViewportPoint(new Vector3(3 * combinedEyeGazePoint.x, 3 * (1 - combinedEyeGazePoint.y), 0));
                         //new Vector2(3 * combinedEyeGazePoint.x, 3 * (1 - combinedEyeGazePoint.y));
 
 
@@ -92,7 +93,7 @@ public class EyeBehaviour : MonoBehaviour
         // combinedEyeGazePoint.y
         // );
 
-        _text.text = string.Format("{0}", position);
+        _text.text = string.Format("{0}\n{1}", position,Input.mousePosition);
         transform.position = position;
     }
 
