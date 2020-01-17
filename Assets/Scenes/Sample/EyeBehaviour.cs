@@ -76,7 +76,8 @@ public class EyeBehaviour : MonoBehaviour
         //var position = Camera.main.ScreenToWorldPoint(new Vector3(combinedEyeGazePoint.x, 1 - combinedEyeGazePoint.y, 10));
 
         var combinedEyeGazePoint = (ToVector2(e.LeftEye.GazePoint.PositionOnDisplayArea) + ToVector2(e.RightEye.GazePoint.PositionOnDisplayArea)) / 2f;
-        var position = new Vector2(3 * combinedEyeGazePoint.x, 3 * (1 - combinedEyeGazePoint.y));
+        var position = Camera.main.WorldToScreenPoint(new Vector3(3 * combinedEyeGazePoint.x, 3 * (1 - combinedEyeGazePoint.y), 0));
+                        //new Vector2(3 * combinedEyeGazePoint.x, 3 * (1 - combinedEyeGazePoint.y));
 
 
         //TODO: it's just move a little bit, try get x, y value of a mouse and compare with current gaze point position value
