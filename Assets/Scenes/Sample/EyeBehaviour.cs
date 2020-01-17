@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 using Tobii.Research;
+using UnityEngine.UI;
 
 public class EyeBehaviour : MonoBehaviour
 {
+    [SerializeField]
+    [Tooltip("Attach text object here.")]
+    private Text _text;
     private IEyeTracker eyeTracker;
 
     private ScreenBasedCalibration screenBasedCalibration;
@@ -70,9 +74,9 @@ public class EyeBehaviour : MonoBehaviour
         }
         //var combinedEyeGazePoint = (ToVector2(e.LeftEye.GazePoint.PositionOnDisplayArea) + ToVector2(e.RightEye.GazePoint.PositionOnDisplayArea)) / 2f;
         //var position = Camera.main.ScreenToWorldPoint(new Vector3(combinedEyeGazePoint.x, 1 - combinedEyeGazePoint.y, 10));
-        
+
         var combinedEyeGazePoint = (ToVector2(e.LeftEye.GazePoint.PositionOnDisplayArea) + ToVector2(e.RightEye.GazePoint.PositionOnDisplayArea)) / 2f;
-        var position = new Vector2(3* combinedEyeGazePoint.x, 3 * (1 - combinedEyeGazePoint.y));
+        var position = new Vector2(3 * combinedEyeGazePoint.x, 3 * (1 - combinedEyeGazePoint.y));
 
 
         //TODO: it's just move a little bit, try get x, y value of a mouse and compare with current gaze point position value
@@ -108,23 +112,23 @@ public class EyeBehaviour : MonoBehaviour
     private void printDisplayArea(IEyeTracker tracker)
     {
         // Get the display area.
-            DisplayArea displayArea = eyeTracker.GetDisplayArea();
-            Debug.Log(string.Format(
-                "Got display area from tracker with serial number {0} with height {1}, width {2} and coordinates:",
-                eyeTracker.SerialNumber,
-                displayArea.Height,
-                displayArea.Width));
-            Debug.Log(string.Format("Bottom Left: ({0}, {1}, {2})",
-                displayArea.BottomLeft.X, displayArea.BottomLeft.Y, displayArea.BottomLeft.Z));
-            Debug.Log(string.Format("Bottom Right: ({0}, {1}, {2})",
-                displayArea.BottomRight.X, displayArea.BottomRight.Y, displayArea.BottomRight.Z));
-            Debug.Log(string.Format("Top Left: ({0}, {1}, {2})",
-                displayArea.TopLeft.X, displayArea.TopLeft.Y, displayArea.TopLeft.Z));
-            Debug.Log(string.Format("Top Right: ({0}, {1}, {2})",
-                displayArea.TopRight.X, displayArea.TopRight.Y, displayArea.TopRight.Z));
-            
-            // Set the display area. A new object is used to show usage.
-            DisplayArea displayAreaToSet = new DisplayArea(displayArea.TopLeft, displayArea.BottomLeft, displayArea.TopRight);
-            eyeTracker.SetDisplayArea(displayAreaToSet);
+        DisplayArea displayArea = eyeTracker.GetDisplayArea();
+        Debug.Log(string.Format(
+            "Got display area from tracker with serial number {0} with height {1}, width {2} and coordinates:",
+            eyeTracker.SerialNumber,
+            displayArea.Height,
+            displayArea.Width));
+        Debug.Log(string.Format("Bottom Left: ({0}, {1}, {2})",
+            displayArea.BottomLeft.X, displayArea.BottomLeft.Y, displayArea.BottomLeft.Z));
+        Debug.Log(string.Format("Bottom Right: ({0}, {1}, {2})",
+            displayArea.BottomRight.X, displayArea.BottomRight.Y, displayArea.BottomRight.Z));
+        Debug.Log(string.Format("Top Left: ({0}, {1}, {2})",
+            displayArea.TopLeft.X, displayArea.TopLeft.Y, displayArea.TopLeft.Z));
+        Debug.Log(string.Format("Top Right: ({0}, {1}, {2})",
+            displayArea.TopRight.X, displayArea.TopRight.Y, displayArea.TopRight.Z));
+
+        // Set the display area. A new object is used to show usage.
+        DisplayArea displayAreaToSet = new DisplayArea(displayArea.TopLeft, displayArea.BottomLeft, displayArea.TopRight);
+        eyeTracker.SetDisplayArea(displayAreaToSet);
     }
 }
