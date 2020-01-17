@@ -85,6 +85,10 @@ public class EyeBehaviour : MonoBehaviour
         // Top right: x: 1.03, y: 0.11
         //Bottom left: x: 0.025, y: -0.92
         // Bottom right: x: 0.91, y: -0.9 
+        _text.text = string.Format("Combine position value: x: {0}, y: {1}",
+        combinedEyeGazePoint.x,
+        combinedEyeGazePoint.y
+        );
         transform.position = position;
     }
 
