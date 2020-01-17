@@ -1,0 +1,130 @@
+﻿using UnityEngine;
+using Tobii.Research;
+
+public class EyeBehaviour : MonoBehaviour
+{
+    private IEyeTracker eyeTracker;
+
+    private ScreenBasedCalibration screenBasedCalibration;
+
+    /// <summary>
+    /// Awake is called when the script instance is being loaded.
+    /// </summary>
+    void Awake()
+    {
+        // --- get the eye trackers and assign the first one
+        EyeTrackerCollection trackers = EyeTrackingOperations.FindAllEyeTrackers();
+        foreach (IEyeTracker eyeTracker in trackers)
+        {
+            Debug.Log(string.Format("Adress: {0}, Name: {1}, Mode: {2}, Serial number: {3}, Firmware version: {4}",
+            eyeTracker.Address, eyeTracker.DeviceName, eyeTracker.Model, eyeTracker.SerialNumber, eyeTracker.FirmwareVersion));
+        }
+        if (trackers.Count > 0)
+        {
+            // --- connect 1st eye tracker
+            eyeTracker = trackers[0];
+            // --- assign the tracker to calibration
+            screenBasedCalibration = new ScreenBasedCalibration(eyeTracker);
+        }
+
+    }
+
+    void Start()
+    {
+        eyeTracker.GazeDataReceived += GazeDataReceivedFromTracker;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        // Quit if escape is pressed.
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!Application.isEditor)
+            {
+                Application.Quit();
+            }
+        }
+        // We are expecting to have all objects.
+        if (eyeTracker == null)
+        {
+            return;
+        }
+        //CalibrationData(this.eyeTracker);
+        if (eyeTracker != null)
+        {
+            print(eyeTracker);
+        }
+    }
+
+    void OnDestroy()
+    {
+        eyeTracker.GazeDataReceived -= GazeDataReceivedFromTracker;
+    }
+
+    private void GazeDataReceivedFromTracker(object sender, GazeDataEventArgs e)
+    {
+        if (e.LeftEye.GazePoint.Validity == Validity.Invalid || e.RightEye.GazePoint.Validity == Validity.Invalid)
+        {
+            return;
+        }
+        var combinedEyeGazePoint = (ToVector2(e.LeftEye.GazePoint.PositionOnDisplayArea) + ToVector2(e.RightEye.GazePoint.PositionOnDisplayArea)) / 2f;
+        var position = Camera.main.ScreenToWorldPoint(new Vector3(combinedEyeGazePoint.x, 1 - combinedEyeGazePoint.y, 10));
+        
+        // var combinedEyeGazePoint = (ToVector3(e.LeftEye.GazePoint.PositionInUserCoordinates) + ToVector3(e.RightEye.GazePoint.PositionInUserCoordinates)) / 2f;
+        // var position = new Vector3(combinedEyeGazePoint.x, 1 - combinedEyeGazePoint.y, 0);
+
+
+        //TODO: it's just move a little bit, try get x, y value of a mouse and compare with current gaze point position value
+        // currently left eye value at corners:
+        //Top left: x: 0.017, y: -0.026
+        // Top right: x: 1.03, y: 0.11
+        //Bottom left: x: 0.025, y: -0.92
+        // Bottom right: x: 0.91, y: -0.9 
+        transform.position = position;
+    }
+
+    private Vector2 ToVector2(NormalizedPoint2D value)
+    {
+        return new Vector2(value.X, value.Y);
+    }
+
+    private Vector3 ToVector3(Point3D point)
+    {
+        return new Vector3(point.X, point.Y, point.Z);
+    }
+
+    private static void CalibrationData(IEyeTracker tracker)
+    {
+        var dataContractSerializer = new System.Runtime.Serialization.DataContractSerializer(typeof(CalibrationData));
+
+        // retrieve the calibraiton data from the eye tracker
+        CalibrationData data = tracker.RetrieveCalibrationData();
+
+        //print out
+        Debug.Log(data.ToString());
+    }
+
+    private void printDisplayArea(IEyeTracker tracker)
+    {
+        // Get the display area.
+            DisplayArea displayArea = eyeTracker.GetDisplayArea();
+            Debug.Log(string.Format(
+                "Got display area from tracker with serial number {0} with height {1}, width {2} and coordinates:",
+                eyeTracker.SerialNumber,
+                displayArea.Height,
+                displayArea.Width));
+            Debug.Log(string.Format("Bottom Left: ({0}, {1}, {2})",
+                displayArea.BottomLeft.X, displayArea.BottomLeft.Y, displayArea.BottomLeft.Z));
+            Debug.Log(string.Format("Bottom Right: ({0}, {1}, {2})",
+                displayArea.BottomRight.X, displayArea.BottomRight.Y, displayArea.BottomRight.Z));
+            Debug.Log(string.Format("Top Left: ({0}, {1}, {2})",
+                displayArea.TopLeft.X, displayArea.TopLeft.Y, displayArea.TopLeft.Z));
+            Debug.Log(string.Format("Top Right: ({0}, {1}, {2})",
+                displayArea.TopRight.X, displayArea.TopRight.Y, displayArea.TopRight.Z));
+            
+            // Set the display area. A new object is used to show usage.
+            DisplayArea displayAreaToSet = new DisplayArea(displayArea.TopLeft, displayArea.BottomLeft, displayArea.TopRight);
+            eyeTracker.SetDisplayArea(displayAreaToSet);
+    }
+}
