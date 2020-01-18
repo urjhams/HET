@@ -73,25 +73,10 @@ public class EyeBehaviour : MonoBehaviour
         {
             return;
         }
-        //var combinedEyeGazePoint = (ToVector2(e.LeftEye.GazePoint.PositionOnDisplayArea) + ToVector2(e.RightEye.GazePoint.PositionOnDisplayArea)) / 2f;
-        //var position = Camera.main.ScreenToWorldPoint(new Vector3(combinedEyeGazePoint.x, 1 - combinedEyeGazePoint.y, 10));
 
         var combinedEyeGazePoint = (ToVector2(e.LeftEye.GazePoint.PositionOnDisplayArea) + ToVector2(e.RightEye.GazePoint.PositionOnDisplayArea)) / 2f;
-        var position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width * combinedEyeGazePoint.x, Screen.height * (1 - combinedEyeGazePoint.y), 0));
-                        //new Vector2(3 * combinedEyeGazePoint.x, 3 * (1 - combinedEyeGazePoint.y));
-
-
-        //TODO: it's just move a little bit, try get x, y value of a mouse and compare with current gaze point position value
-        // currently left eye value at corners:
-        //Top left: x: 0.017, y: -0.026
-        // Top right: x: 1.03, y: 0.11
-        //Bottom left: x: 0.025, y: -0.92
-        // Bottom right: x: 0.91, y: -0.9 
-
-        // _text.text = string.Format("Combine position value: x: {0}, y: {1}",
-        // combinedEyeGazePoint.x,
-        // combinedEyeGazePoint.y
-        // );
+        var position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width * combinedEyeGazePoint.x, Screen.height * (1 - combinedEyeGazePoint.y), 10));    // the z should be 10 cuz the camera currently has z value -10
+        //TODO: use something similar to LatestProcessedGazeData in the ScreenBasedPrefabDemo
 
         _text.text = string.Format("{0}\n{1}", position,Input.mousePosition);
         transform.position = position;
