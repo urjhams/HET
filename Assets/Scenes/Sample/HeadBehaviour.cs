@@ -98,6 +98,7 @@ public class HeadBehaviour : MonoBehaviour
         var info = string.Format("head X: {0}, head Y: {1}", X, Y);
         Debug.Log(info);
 
-        transform.position = new Vector2(RawYaw * 5,RawPitch * 5);
+        transform.position = new Vector2(RawYaw * 5,RawPitch * 5);  
+        //TODO: find out a value to replace for 5 to work perfectly with all size of screen
     }
 }
