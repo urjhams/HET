@@ -20,8 +20,14 @@ public class EyeBehaviour : MonoBehaviour
         EyeTrackerCollection trackers = EyeTrackingOperations.FindAllEyeTrackers();
         foreach (IEyeTracker eyeTracker in trackers)
         {
-            Debug.Log(string.Format("Adress: {0}, Name: {1}, Mode: {2}, Serial number: {3}, Firmware version: {4}",
-            eyeTracker.Address, eyeTracker.DeviceName, eyeTracker.Model, eyeTracker.SerialNumber, eyeTracker.FirmwareVersion));
+            Debug.Log(string.Format(
+                "Adress: {0}, Name: {1}, Mode: {2}, Serial number: {3}, Firmware version: {4}", 
+                eyeTracker.Address, 
+                eyeTracker.DeviceName, 
+                eyeTracker.Model, 
+                eyeTracker.SerialNumber, 
+                eyeTracker.FirmwareVersion
+                ));
         }
         if (trackers.Count > 0)
         {
@@ -30,7 +36,6 @@ public class EyeBehaviour : MonoBehaviour
             // --- assign the tracker to calibration
             screenBasedCalibration = new ScreenBasedCalibration(eyeTracker);
         }
-
     }
 
     void Start()
@@ -74,8 +79,13 @@ public class EyeBehaviour : MonoBehaviour
             return;
         }
 
-        var combinedEyeGazePoint = (ToVector2(e.LeftEye.GazePoint.PositionOnDisplayArea) + ToVector2(e.RightEye.GazePoint.PositionOnDisplayArea)) / 2f;
-        var position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width * combinedEyeGazePoint.x, Screen.height * (1 - combinedEyeGazePoint.y), 10));    // the z should be 10 cuz the camera currently has z value -10
+        var combinedEyeGazePoint = (
+            ToVector2(e.LeftEye.GazePoint.PositionOnDisplayArea) + 
+            ToVector2(e.RightEye.GazePoint.PositionOnDisplayArea)
+            ) / 2f;
+        var position = Camera.main.ScreenToWorldPoint(
+            new Vector3(Screen.width * combinedEyeGazePoint.x, Screen.height * (1 - combinedEyeGazePoint.y), 10)
+            );    // the z should be 10 cuz the camera currently has z value -10
         //TODO: use something similar to LatestProcessedGazeData in the ScreenBasedPrefabDemo
 
         _text.text = string.Format("{0}\n{1}", position,Input.mousePosition);

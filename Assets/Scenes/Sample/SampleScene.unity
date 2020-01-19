@@ -237,6 +237,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6596927644919535319, guid: 51985169f15164c81957f32c2fa98019,
+        type: 3}
+      propertyPath: m_Text
+      value: "<color=cyan>HET Sample</color>\n\nThe Eye Tracker component is set to
+        connect to the first found eye tracker. \n\n<color=brown>Run this scene in
+        full screen for eye tracking to work correctly.</color>\n\n<color=white>Press
+        the escape button (\"Esc\") to quit.</color>"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51985169f15164c81957f32c2fa98019, type: 3}
 --- !u!114 &169471144 stripped
