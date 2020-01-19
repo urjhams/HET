@@ -572,6 +572,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: puzzle peice 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1317078343778820188, guid: 8701b6b56624c47f390d831ca36ed368,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1317078343778820190, guid: 8701b6b56624c47f390d831ca36ed368,
         type: 3}
       propertyPath: m_Sprite
