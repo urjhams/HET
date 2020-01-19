@@ -120,138 +120,144 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &169471143
+--- !u!1001 &90947588
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6596927644452882574, guid: 51985169f15164c81957f32c2fa98019,
+    - target: {fileID: 4400839603618069397, guid: 238ef21e5d8d94056a406ced7f365160,
+        type: 3}
+      propertyPath: m_Text
+      value: '<color=cyan>HET</color>
+
+
+        The Eye Tracker component is set to connect to the first found eye tracker.
+
+
+        <color=white>Run this scene in full screen for eye tracking to work correctly.</color>
+
+
+        Press the escape button ("Esc") to quit.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4400839604233807308, guid: 238ef21e5d8d94056a406ced7f365160,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6596927644452882574, guid: 51985169f15164c81957f32c2fa98019,
+    - target: {fileID: 4400839604233807308, guid: 238ef21e5d8d94056a406ced7f365160,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6596927644452882574, guid: 51985169f15164c81957f32c2fa98019,
+    - target: {fileID: 4400839604233807308, guid: 238ef21e5d8d94056a406ced7f365160,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6596927644452882574, guid: 51985169f15164c81957f32c2fa98019,
+    - target: {fileID: 4400839604233807308, guid: 238ef21e5d8d94056a406ced7f365160,
         type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6596927644452882574, guid: 51985169f15164c81957f32c2fa98019,
+    - target: {fileID: 4400839604233807308, guid: 238ef21e5d8d94056a406ced7f365160,
         type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6596927644452882574, guid: 51985169f15164c81957f32c2fa98019,
+    - target: {fileID: 4400839604233807308, guid: 238ef21e5d8d94056a406ced7f365160,
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6596927644452882574, guid: 51985169f15164c81957f32c2fa98019,
+    - target: {fileID: 4400839604233807308, guid: 238ef21e5d8d94056a406ced7f365160,
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6596927644452882574, guid: 51985169f15164c81957f32c2fa98019,
+    - target: {fileID: 4400839604233807308, guid: 238ef21e5d8d94056a406ced7f365160,
         type: 3}
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 6596927644452882574, guid: 51985169f15164c81957f32c2fa98019,
+    - target: {fileID: 4400839604233807308, guid: 238ef21e5d8d94056a406ced7f365160,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6596927644452882574, guid: 51985169f15164c81957f32c2fa98019,
+    - target: {fileID: 4400839604233807308, guid: 238ef21e5d8d94056a406ced7f365160,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6596927644452882574, guid: 51985169f15164c81957f32c2fa98019,
+    - target: {fileID: 4400839604233807308, guid: 238ef21e5d8d94056a406ced7f365160,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6596927644452882574, guid: 51985169f15164c81957f32c2fa98019,
+    - target: {fileID: 4400839604233807308, guid: 238ef21e5d8d94056a406ced7f365160,
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6596927644452882574, guid: 51985169f15164c81957f32c2fa98019,
+    - target: {fileID: 4400839604233807308, guid: 238ef21e5d8d94056a406ced7f365160,
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6596927644452882574, guid: 51985169f15164c81957f32c2fa98019,
+    - target: {fileID: 4400839604233807308, guid: 238ef21e5d8d94056a406ced7f365160,
         type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6596927644452882574, guid: 51985169f15164c81957f32c2fa98019,
+    - target: {fileID: 4400839604233807308, guid: 238ef21e5d8d94056a406ced7f365160,
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6596927644452882574, guid: 51985169f15164c81957f32c2fa98019,
+    - target: {fileID: 4400839604233807308, guid: 238ef21e5d8d94056a406ced7f365160,
         type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6596927644452882574, guid: 51985169f15164c81957f32c2fa98019,
+    - target: {fileID: 4400839604233807308, guid: 238ef21e5d8d94056a406ced7f365160,
         type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6596927644452882574, guid: 51985169f15164c81957f32c2fa98019,
+    - target: {fileID: 4400839604233807308, guid: 238ef21e5d8d94056a406ced7f365160,
         type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6596927644452882574, guid: 51985169f15164c81957f32c2fa98019,
+    - target: {fileID: 4400839604233807308, guid: 238ef21e5d8d94056a406ced7f365160,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6596927644452882574, guid: 51985169f15164c81957f32c2fa98019,
+    - target: {fileID: 4400839604233807308, guid: 238ef21e5d8d94056a406ced7f365160,
         type: 3}
       propertyPath: m_Pivot.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6596927644452882574, guid: 51985169f15164c81957f32c2fa98019,
+    - target: {fileID: 4400839604233807308, guid: 238ef21e5d8d94056a406ced7f365160,
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6596927644452882578, guid: 51985169f15164c81957f32c2fa98019,
+    - target: {fileID: 4400839604233807312, guid: 238ef21e5d8d94056a406ced7f365160,
         type: 3}
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 6596927644919535319, guid: 51985169f15164c81957f32c2fa98019,
-        type: 3}
-      propertyPath: m_Text
-      value: "<color=cyan>HET Sample</color>\n\nThe Eye Tracker component is set to
-        connect to the first found eye tracker. \n\n<color=brown>Run this scene in
-        full screen for eye tracking to work correctly.</color>\n\n<color=white>Press
-        the escape button (\"Esc\") to quit.</color>"
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 51985169f15164c81957f32c2fa98019, type: 3}
---- !u!114 &169471144 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: 238ef21e5d8d94056a406ced7f365160, type: 3}
+--- !u!114 &90947589 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6596927644573598013, guid: 51985169f15164c81957f32c2fa98019,
+  m_CorrespondingSourceObject: {fileID: 4400839604245212287, guid: 238ef21e5d8d94056a406ced7f365160,
     type: 3}
-  m_PrefabInstance: {fileID: 169471143}
+  m_PrefabInstance: {fileID: 90947588}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -669,4 +675,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc9d00869c4f4774b12b059616c0b01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _text: {fileID: 169471144}
+  _text: {fileID: 90947589}
