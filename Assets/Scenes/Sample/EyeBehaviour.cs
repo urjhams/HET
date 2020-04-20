@@ -41,7 +41,6 @@ public class EyeBehaviour : MonoBehaviour
     void Start()
     {
         eyeTracker.GazeDataReceived += GazeDataReceivedFromTracker;
-        Cursor.visible = true;
     }
 
     // Update is called once per frame

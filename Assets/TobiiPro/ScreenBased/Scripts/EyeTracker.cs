@@ -35,12 +35,17 @@ namespace Tobii.Research.Unity
             }
         }
 
+        // private void test() {
+        //TODO: use this
+        //     LatestGazeData.Left.GazePointOnDisplayArea
+        // }
+
         /// <summary>
         /// Get the latest processed processed gaze data.
         /// Don't care if there a newer one has arrived.
         /// </summary>
         public IGazeData LatestProcessedGazeData { get { return _latestGazeData; } }
-
+        
         /// <summary>
         /// Pop and get the next gaze data object from the queue.
         /// </summary>
