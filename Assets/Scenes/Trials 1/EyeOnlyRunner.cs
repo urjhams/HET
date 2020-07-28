@@ -23,14 +23,15 @@ public class EyeOnlyRunner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeLeft -= Time.deltaTime;
-        if (timeLeft >= 0) {
-            Debug.Log(timeLeft);
-        }
+        // timeLeft -= Time.deltaTime;
+        // if (timeLeft >= 0) {
+        //     Debug.Log(timeLeft);
+        // }
         int selectedIndex = System.Array.IndexOf(subFrame, selectedObj);
         if (selectedIndex != -1) {
             selectedPattern = spriteList[selectedIndex];
         }
+        //Debug.Log(selectedIndex);
     }
 
     private void getRandomMainObjSprite() {
