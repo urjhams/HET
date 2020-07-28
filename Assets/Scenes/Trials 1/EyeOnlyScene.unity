@@ -1565,7 +1565,13 @@ MonoBehaviour:
   - {fileID: 358261259}
   - {fileID: 340843250}
   - {fileID: 1950139395}
-  subFrame: []
+  subFrame:
+  - {fileID: 902107676}
+  - {fileID: 1716311139}
+  - {fileID: 1586741293}
+  - {fileID: 169290928}
+  - {fileID: 2048878211}
+  - {fileID: 144461227}
   spriteList:
   - {fileID: 21300000, guid: c38837436f9f840cd93fa6c54d9222ac, type: 3}
   - {fileID: 21300000, guid: 915b4d03d662148f29344324abaad28a, type: 3}

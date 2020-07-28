@@ -8,7 +8,8 @@ public class ColliderHandle : MonoBehaviour
     void OnMouseOver()
     {
         EyeOnlyRunner.selectedObj = this.gameObject;
-        EyeOnlyRunner.selectedObj.GetComponent<SpriteRenderer>().sprite = GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().frameSprites[1];
+        EyeOnlyRunner.selectedObj.GetComponent<SpriteRenderer>().sprite = 
+        GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().frameSprites[1];
     }
 
     /// <summary>
@@ -16,7 +17,8 @@ public class ColliderHandle : MonoBehaviour
     /// </summary>
     void OnMouseExit()
     {
-        EyeOnlyRunner.selectedObj.GetComponent<SpriteRenderer>().sprite = GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().frameSprites[0];
+        EyeOnlyRunner.selectedObj.GetComponent<SpriteRenderer>().sprite = 
+        GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().frameSprites[0];
         EyeOnlyRunner.selectedObj = null;
     }
 
