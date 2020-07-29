@@ -10,7 +10,7 @@ public class EyeOnlyRunner : MonoBehaviour
     public GameObject[] subFrame;   // the frame object list (which co-responding with pattern objects as container)
     public Sprite[] spriteList;     // list of sprites for patterns
     public Sprite[] frameSprites;   // list of sprites for frame objects (use for different color of the frame)
-    private Sprite selectedPattern; // current selected pattern (which the eye gaze is onto)
+    // private Sprite selectedPattern; // current selected pattern (which the eye gaze is onto)
     public float timeLeft = 30;     // the trial time left, will counted down right from start
 
     // after this amount of time when eye gaze hit the objects, it will be counted as "lock" (eye only scenario)
@@ -58,25 +58,45 @@ public class EyeOnlyRunner : MonoBehaviour
             Debug.Log(timeLeft);
         }
 
-        // get the current selected index
+        // the selected pattern must be one of the pattern in the provided patterns list, so compare to find out its index
         int selectedIndex = System.Array.IndexOf(subFrame, selectedObj);
-
-        if (selectedIndex != -1) {
-            selectedPattern = spriteList[selectedIndex];
-        }
+        
+        /*
+        with every frame, if there is a selected object (it can be only one at the time anyway),
+        selected index will be the index number, otherwise it will be -1, so just need to check instead
+        */
+        // if (selectedIndex != -1) {
+        //     selectedPattern = spriteList[selectedIndex];    // save the current selected pattern
+        // }
+        
+        /*
+            eye lock time counting down, but will reset and stop the next seps if there is no selected object
+        */
         eyeLockTime -= Time.deltaTime;
         if (selectedObj == null) {
-
-        }
-        confirmTime -= Time.deltaTime;
-        if (selectedObj == null) {
-            confirmTime = 2;
+            eyeLockTime = 2;
             return;
-        } else {
-            if (confirmTime <= 0.0) {
-                EyeOnlyRunner.selectedObj.GetComponent<SpriteRenderer>().sprite = 
-                GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().frameSprites[(selectedIndex == currentRandomIndex) ? 2 : 3];
+        }
+
+        /*
+            when the lock time is over, start the confirm time
+        */
+        if (eyeLockTime <= 0) {
+            EyeOnlyRunner.selectedObj.GetComponent<SpriteRenderer>().sprite = 
+                    GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().frameSprites[4];
+
+            confirmTime -= Time.deltaTime;
+            if (selectedObj == null) {
+                confirmTime = 2;
+                return;
+            } else {
+                if (confirmTime <= 0.0) {
+                    EyeOnlyRunner.selectedObj.GetComponent<SpriteRenderer>().sprite = 
+                        GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().frameSprites[(selectedIndex == currentRandomIndex) ? 2 : 3];
+                }
             }
+        } else {
+            return;
         }
     }
 
