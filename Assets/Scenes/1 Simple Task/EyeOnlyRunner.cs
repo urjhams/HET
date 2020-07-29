@@ -75,6 +75,7 @@ public class EyeOnlyRunner : MonoBehaviour
         eyeLockTime -= Time.deltaTime;
         if (selectedObj == null) {
             eyeLockTime = 2;
+            confirmTime = 2;
             return;
         }
 
@@ -88,6 +89,7 @@ public class EyeOnlyRunner : MonoBehaviour
             confirmTime -= Time.deltaTime;
             if (selectedObj == null) {
                 confirmTime = 2;
+                eyeLockTime = 2;
                 return;
             } else {
                 if (confirmTime <= 0.0) {
