@@ -5,7 +5,7 @@ public class EyeOnlyRunner : MonoBehaviour
     public static GameObject selectedObj;
     public GameObject objMain;
     public GameObject[] subObj;
-    public GameObject[]subFrame;
+    public GameObject[] subFrame;
     public Sprite[] spriteList;
     public Sprite[] frameSprites;
     private Sprite selectedPattern;

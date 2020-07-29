@@ -46,12 +46,12 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\EyeTrial.cs" />
+     <Compile Include="Assets\Scenes\1 Simple Task\ColliderHandle.cs" />
+     <Compile Include="Assets\Scenes\1 Simple Task\EyeOnlyRunner.cs" />
      <Compile Include="Assets\Scenes\Sample\EyeBehaviour.cs" />
      <Compile Include="Assets\Scenes\Sample\EyeBehaviourDemo.cs" />
      <Compile Include="Assets\Scenes\Sample\HeadBehaviour.cs" />
      <Compile Include="Assets\Scenes\Sample\Scene1.cs" />
-     <Compile Include="Assets\Scenes\Trials 1\ColliderHandle.cs" />
-     <Compile Include="Assets\Scenes\Trials 1\EyeOnlyRunner.cs" />
      <Compile Include="Assets\TobiiPro\Common\Scripts\CalibrationThread.cs" />
      <Compile Include="Assets\TobiiPro\Common\Scripts\Data\UserPositionGuideData.cs" />
      <Compile Include="Assets\TobiiPro\Common\Scripts\ExtensionMethods.cs" />
