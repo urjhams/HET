@@ -2,14 +2,6 @@
 
 public class ColliderHandle : MonoBehaviour
 {
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void Update()
-    {
-        
-    }
-
     private void registerSelectedObject() {
         EyeOnlyRunner.selectedObj = this.gameObject;
         EyeOnlyRunner.selectedObj.GetComponent<SpriteRenderer>().sprite = 
@@ -47,7 +39,4 @@ public class ColliderHandle : MonoBehaviour
             deRegisterSelectedObject();
         }
     }
-    /// Note: here we are using a mouse so I override those functions
-    /// However, when using a tracker or something, try to get the point (Vector 3) and check if it inside a collider of this object
-    /// https://docs.unity3d.com/ScriptReference/Bounds.Contains.html?_ga=2.68712785.1575043690.1587391725-154023349.1587391725
 }
