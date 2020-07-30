@@ -67,6 +67,7 @@ public class EyeOnlyRunner : MonoBehaviour
         // the selected pattern must be one of the pattern in the provided patterns list, so compare to find out its index
         int selectedIndex = System.Array.IndexOf(subFrame, selectedObj);
         
+        if ( selectedIndex == -1) { return; }
         /*
             eye lock time counting down, but will reset and stop the next seps if there is no selected object
         */
@@ -112,6 +113,23 @@ public class EyeOnlyRunner : MonoBehaviour
 
         // the selected pattern must be one of the pattern in the provided patterns list, so compare to find out its index
         int selectedIndex = System.Array.IndexOf(subFrame, selectedObj);
+
+        int headSelectedIndex = System.Array.IndexOf(subFrame, headSelectedObj);
+
+        if (selectedIndex == -1 || headSelectedIndex == -1) 
+        { 
+            confirmTime = 2;
+            return; 
+        }
+
+        if (selectedIndex == headSelectedIndex) {
+            confirmTime -= Time.deltaTime;
+            if ( confirmTime <= 0.0) {
+                EyeOnlyRunner.selectedObj.GetComponent<SpriteRenderer>().sprite = 
+                    GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>()
+                        .frameSprites[(selectedIndex == currentRandomIndex) ? 2 : 3];
+            }
+        }
     }
 
     private void getRandomMainObjSprite() {
