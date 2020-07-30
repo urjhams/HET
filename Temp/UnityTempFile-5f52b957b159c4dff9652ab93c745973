@@ -298,6 +298,7 @@
 "Assets/Scenes/1 Simple Task/EyeHandler.cs"
 "Assets/Scenes/1 Simple Task/EyeOnlyRunner.cs"
 "Assets/Scenes/1 Simple Task/HeadHandler.cs"
+"Assets/Scenes/Global/Global.cs"
 "Assets/Scenes/Sample/EyeBehaviour.cs"
 "Assets/Scenes/Sample/EyeBehaviourDemo.cs"
 "Assets/Scenes/Sample/HeadBehaviour.cs"

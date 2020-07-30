@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
-enum TrialState {
-    Eye, HeadEye
-}
+
 public class EyeOnlyRunner : MonoBehaviour
 {
     public static GameObject selectedObj;
+
+    public static GameObject headSelectedObj;
     public GameObject objMain;      // The main pattern object
     public GameObject[] subObj;     // pattern objects list
     public GameObject[] subFrame;   // the frame object list (which co-responding with pattern objects as container)
@@ -20,8 +20,6 @@ public class EyeOnlyRunner : MonoBehaviour
     private float confirmTime = 2;  
 
     private int currentRandomIndex = -1;    // the saved sprite index of the main object
-
-    TrialState state = TrialState.Eye;
 
     void Start()
     {
@@ -39,7 +37,15 @@ public class EyeOnlyRunner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (this.state) {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!Application.isEditor)
+            {
+                Application.Quit();
+            }
+        }
+
+        switch (Global.currentState) {
             case TrialState.Eye:
                 updateInEyeOnly();
                 break;
@@ -60,14 +66,6 @@ public class EyeOnlyRunner : MonoBehaviour
 
         // the selected pattern must be one of the pattern in the provided patterns list, so compare to find out its index
         int selectedIndex = System.Array.IndexOf(subFrame, selectedObj);
-        
-        /*
-        with every frame, if there is a selected object (it can be only one at the time anyway),
-        selected index will be the index number, otherwise it will be -1, so just need to check instead
-        */
-        // if (selectedIndex != -1) {
-        //     selectedPattern = spriteList[selectedIndex];    // save the current selected pattern
-        // }
         
         /*
             eye lock time counting down, but will reset and stop the next seps if there is no selected object
@@ -104,7 +102,16 @@ public class EyeOnlyRunner : MonoBehaviour
     }
 
     private void updateInHeadEye() {
-        //TODO:
+        // trial time count down (in total)
+        timeLeft -= Time.deltaTime;
+        if (timeLeft <= 0) {
+            //TODO: put the trail to end state
+        } else {
+            //Debug.Log(timeLeft);
+        }
+
+        // the selected pattern must be one of the pattern in the provided patterns list, so compare to find out its index
+        int selectedIndex = System.Array.IndexOf(subFrame, selectedObj);
     }
 
     private void getRandomMainObjSprite() {
