@@ -5,13 +5,35 @@ public class ColliderHandle : MonoBehaviour
     private void registerSelectedObject() {
         EyeOnlyRunner.selectedObj = this.gameObject;
         EyeOnlyRunner.selectedObj.GetComponent<SpriteRenderer>().sprite = 
-        GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().frameSprites[1];
+            GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().frameSprites[1];
     }
 
     private void deRegisterSelectedObject() {
-        EyeOnlyRunner.selectedObj.GetComponent<SpriteRenderer>().sprite = 
-        GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().frameSprites[0];
         EyeOnlyRunner.selectedObj = null;
+        EyeOnlyRunner.headSelectedObj = null;
+        EyeOnlyRunner.selectedObj.GetComponent<SpriteRenderer>().sprite = 
+            GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().frameSprites[0];
+    }
+
+    private void registerHeadSelectedObject() {
+        // only work if in head-eye mode and this is the selected object already
+        if (Global.currentState != TrialState.HeadEye) { return; }
+        if (EyeOnlyRunner.selectedObj == this.gameObject) {
+            EyeOnlyRunner.headSelectedObj = this.gameObject;
+            EyeOnlyRunner.selectedObj.GetComponent<SpriteRenderer>().sprite = 
+                GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().frameSprites[4];
+        }
+        
+    }
+
+    private void deregisterHeadSelectedObject() {
+        if (Global.currentState != TrialState.HeadEye) { return; }
+        if (EyeOnlyRunner.selectedObj == this.gameObject) {
+            EyeOnlyRunner.headSelectedObj = null;
+            EyeOnlyRunner.selectedObj.GetComponent<SpriteRenderer>().sprite = 
+                GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().frameSprites[1];
+        }
+        
     }
 
     /// <summary>
@@ -22,6 +44,10 @@ public class ColliderHandle : MonoBehaviour
     void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.name.Equals("eyeCursor")) 
+        {
+            registerSelectedObject();
+        }
+        if (other.gameObject.name.Equals("headCursor")) 
         {
             registerSelectedObject();
         }
@@ -36,7 +62,11 @@ public class ColliderHandle : MonoBehaviour
     {
         if (other.gameObject.name.Equals("eyeCursor")) 
         {
-            deRegisterSelectedObject();
+            registerHeadSelectedObject();
+        }
+        if (other.gameObject.name.Equals("headCursor")) 
+        {
+            deregisterHeadSelectedObject();
         }
     }
 }
