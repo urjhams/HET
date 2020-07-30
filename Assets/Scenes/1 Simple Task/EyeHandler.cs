@@ -36,7 +36,10 @@ public class EyeHandler : MonoBehaviour
     }
     void Start()
     {
-        eyeTracker.GazeDataReceived += GazeDataReceivedFromTracker;
+        try {
+            eyeTracker.GazeDataReceived += GazeDataReceivedFromTracker;
+        } catch {}
+        
     }
 
     // Update is called once per frame
@@ -53,7 +56,9 @@ public class EyeHandler : MonoBehaviour
 
     void OnDestroy()
     {
-        eyeTracker.GazeDataReceived -= GazeDataReceivedFromTracker;
+        try {
+            eyeTracker.GazeDataReceived -= GazeDataReceivedFromTracker;
+        } catch {}
     }
 
     private void GazeDataReceivedFromTracker(object sender, GazeDataEventArgs e)

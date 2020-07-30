@@ -3,16 +3,16 @@
 public class EyeOnlyRunner : MonoBehaviour
 {
     public static GameObject selectedObj;
-
     public static GameObject headSelectedObj;
+
     public GameObject objMain;      // The main pattern object
     public GameObject[] subObj;     // pattern objects list
     public GameObject[] subFrame;   // the frame object list (which co-responding with pattern objects as container)
     public Sprite[] spriteList;     // list of sprites for patterns
     public Sprite[] frameSprites;   // list of sprites for frame objects (use for different color of the frame)
-    // private Sprite selectedPattern; // current selected pattern (which the eye gaze is onto)
-    public float timeLeft = 30;     // the trial time left, will counted down right from start
 
+    public float timeLeft = 30;     // the trial time left, will counted down right from start
+    
     // after this amount of time when eye gaze hit the objects, it will be counted as "lock" (eye only scenario)
     private float eyeLockTime = 2;
 
@@ -31,7 +31,9 @@ public class EyeOnlyRunner : MonoBehaviour
         // then chose one of them randomly as the main object to compare
         this.getRandomMainObjSprite();
 
-        // Debug.Log(GameObject.Find("obj_main").GetComponent<SpriteRenderer>().sprite.name);
+        if (Global.currentState == TrialState.Eye) {
+            GameObject.Find("headCursor").SetActive(false);
+        }
     }
 
     // Update is called once per frame
