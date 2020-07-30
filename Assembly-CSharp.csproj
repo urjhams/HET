@@ -47,7 +47,9 @@
   <ItemGroup>
      <Compile Include="Assets\EyeTrial.cs" />
      <Compile Include="Assets\Scenes\1 Simple Task\ColliderHandle.cs" />
+     <Compile Include="Assets\Scenes\1 Simple Task\EyeHandler.cs" />
      <Compile Include="Assets\Scenes\1 Simple Task\EyeOnlyRunner.cs" />
+     <Compile Include="Assets\Scenes\1 Simple Task\HeadHandler.cs" />
      <Compile Include="Assets\Scenes\Sample\EyeBehaviour.cs" />
      <Compile Include="Assets\Scenes\Sample\EyeBehaviourDemo.cs" />
      <Compile Include="Assets\Scenes\Sample\HeadBehaviour.cs" />

@@ -25,7 +25,7 @@ public class EyeOnlyRunner : MonoBehaviour
 
     void Start()
     {
-        Cursor.visible = true;
+        // Cursor.visible = true;
 
         // fill random pattern sprites
         this.fillSubObjectWithRandomSprite();
@@ -55,7 +55,7 @@ public class EyeOnlyRunner : MonoBehaviour
         if (timeLeft <= 0) {
             //TODO: put the trail to end state
         } else {
-            Debug.Log(timeLeft);
+            //Debug.Log(timeLeft);
         }
 
         // the selected pattern must be one of the pattern in the provided patterns list, so compare to find out its index
@@ -84,7 +84,7 @@ public class EyeOnlyRunner : MonoBehaviour
         */
         if (eyeLockTime <= 0) {
             EyeOnlyRunner.selectedObj.GetComponent<SpriteRenderer>().sprite = 
-                    GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().frameSprites[4];
+                GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().frameSprites[4];
 
             confirmTime -= Time.deltaTime;
             if (selectedObj == null) {
@@ -94,7 +94,8 @@ public class EyeOnlyRunner : MonoBehaviour
             } else {
                 if (confirmTime <= 0.0) {
                     EyeOnlyRunner.selectedObj.GetComponent<SpriteRenderer>().sprite = 
-                        GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().frameSprites[(selectedIndex == currentRandomIndex) ? 2 : 3];
+                        GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>()
+                            .frameSprites[(selectedIndex == currentRandomIndex) ? 2 : 3];
                 }
             }
         } else {
