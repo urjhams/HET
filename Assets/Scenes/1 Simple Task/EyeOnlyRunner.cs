@@ -9,7 +9,6 @@ public class EyeOnlyRunner : MonoBehaviour
     public GameObject[] subObj;     // pattern objects list
     public GameObject[] subFrame;   // the frame object list (which co-responding with pattern objects as container)
     public Sprite[] spriteList;     // list of sprites for patterns
-    public Sprite[] frameSprites;   // list of sprites for frame objects (use for different color of the frame)
 
     public float timeLeft = 30;     // the trial time left, will counted down right from start
     
@@ -20,6 +19,12 @@ public class EyeOnlyRunner : MonoBehaviour
     private float confirmTime = 2;  
 
     private int currentRandomIndex = -1;    // the saved sprite index of the main object
+
+    public Sprite white;
+    public Sprite blue;
+    public Sprite yellow;
+    public Sprite green;
+    public Sprite red;
 
     void Start()
     {
@@ -85,7 +90,7 @@ public class EyeOnlyRunner : MonoBehaviour
         */
         if (eyeLockTime <= 0) {
             EyeOnlyRunner.selectedObj.GetComponent<SpriteRenderer>().sprite = 
-                GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().frameSprites[4];
+                GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().yellow;
 
             confirmTime -= Time.deltaTime;
             if (selectedObj == null) {
@@ -95,8 +100,9 @@ public class EyeOnlyRunner : MonoBehaviour
             } else {
                 if (confirmTime <= 0.0) {
                     EyeOnlyRunner.selectedObj.GetComponent<SpriteRenderer>().sprite = 
-                        GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>()
-                            .frameSprites[(selectedIndex == currentRandomIndex) ? 2 : 3];
+                        (selectedIndex == currentRandomIndex) ?
+                        GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().green : 
+                        GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().red;
                 }
             }
         } else {
@@ -128,8 +134,9 @@ public class EyeOnlyRunner : MonoBehaviour
             confirmTime -= Time.deltaTime;
             if ( confirmTime <= 0.0) {
                 EyeOnlyRunner.selectedObj.GetComponent<SpriteRenderer>().sprite = 
-                    GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>()
-                        .frameSprites[(selectedIndex == currentRandomIndex) ? 2 : 3];
+                    (selectedIndex == currentRandomIndex) ?
+                    GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().green : 
+                    GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().red;
             }
         }
     }

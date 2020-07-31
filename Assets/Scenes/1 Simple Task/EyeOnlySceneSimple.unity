@@ -1863,13 +1863,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5d46a4b8d814f47619d2d2e7737629ee, type: 3}
   - {fileID: 21300000, guid: ee53ebade657a4b8b94b4d73b151ca90, type: 3}
   - {fileID: 21300000, guid: 68729fa4a015344a7ae0366c89e06621, type: 3}
-  frameSprites:
-  - {fileID: 21300000, guid: 5dd8d426099e34c56aa32e9f4b8eca53, type: 3}
-  - {fileID: 21300000, guid: abc46de68b9ce45ee90ef1d2c7312629, type: 3}
-  - {fileID: 21300000, guid: 3376b23f78c7741e5b6c061cb329d5be, type: 3}
-  - {fileID: 21300000, guid: ea605786b660b4907884785394b8c6cc, type: 3}
-  - {fileID: 21300000, guid: 7b76609dcc7254104962d405fcb2f273, type: 3}
   timeLeft: 30
+  white: {fileID: 21300000, guid: 5dd8d426099e34c56aa32e9f4b8eca53, type: 3}
+  blue: {fileID: 21300000, guid: abc46de68b9ce45ee90ef1d2c7312629, type: 3}
+  yellow: {fileID: 21300000, guid: 7b76609dcc7254104962d405fcb2f273, type: 3}
+  green: {fileID: 21300000, guid: 3376b23f78c7741e5b6c061cb329d5be, type: 3}
+  red: {fileID: 21300000, guid: ea605786b660b4907884785394b8c6cc, type: 3}
 --- !u!4 &1924452959
 Transform:
   m_ObjectHideFlags: 0
