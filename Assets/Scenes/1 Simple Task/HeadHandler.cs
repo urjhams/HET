@@ -52,7 +52,6 @@ public class HeadHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         if (!HeadHandler.FTGetData(ref trackData))
         {
             Debug.Log("FTGetData returned false. FreeTrack likely not working.");
