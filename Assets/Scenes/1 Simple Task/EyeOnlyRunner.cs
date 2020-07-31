@@ -63,13 +63,13 @@ public class EyeOnlyRunner : MonoBehaviour
     }
 
     private void updateInEyeOnly() {
-        // trial time count down (in total)
-        timeLeft -= Time.deltaTime;
-        if (timeLeft <= 0) {
-            //TODO: put the trail to end state
-        } else {
-            //Debug.Log(timeLeft);
-        }
+        // // trial time count down (in total)
+        // timeLeft -= Time.deltaTime;
+        // if (timeLeft <= 0) {
+        //     //TODO: put the trail to end state
+        // } else {
+        //     //Debug.Log(timeLeft);
+        // }
         if (selectedObj != null) {
             selectedObj.GetComponent<SpriteRenderer>().sprite = blue;
         } else {
@@ -81,35 +81,26 @@ public class EyeOnlyRunner : MonoBehaviour
         // the selected pattern must be one of the pattern in the provided patterns list, so compare to find out its index
         int selectedIndex = System.Array.IndexOf(subFrame, selectedObj);
         
-        if ( selectedIndex == -1) { return; }
-        /*
-            eye lock time counting down, but will reset and stop the next seps if there is no selected object
-        */
-        eyeLockTime -= Time.deltaTime;
+        if ( selectedIndex == -1) 
+        { 
+            selectedObj.GetComponent<SpriteRenderer>().sprite = white;
+            eyeLockTime = 2;
+            confirmTime = 2;
+            return; 
+        }
 
-        /*
-            when the lock time is over, start the confirm time
-        */
-        if (eyeLockTime <= 0) {
-            selectedObj.GetComponent<SpriteRenderer>().sprite = 
-                GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().yellow;
+        //eye lock time counting down, but will reset and stop the next seps if there is no selected object
+        eyeLockTime -= Time.deltaTime;
+        //  when the lock time is over, start the confirm time
+        if (eyeLockTime <= 0) 
+        {
+            selectedObj.GetComponent<SpriteRenderer>().sprite =  yellow;
 
             confirmTime -= Time.deltaTime;
-            if (selectedObj == null) {
-                confirmTime = 2;
-                eyeLockTime = 2;
-                return;
-            } else {
-                if (confirmTime <= 0.0) {
-                    EyeOnlyRunner.selectedObj.GetComponent<SpriteRenderer>().sprite = 
-                        (selectedIndex == currentRandomIndex) ?
-                        GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().green : 
-                        GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().red;
-                }
+            if (confirmTime <= 0.0) {
+                selectedObj.GetComponent<SpriteRenderer>().sprite = (selectedIndex == currentRandomIndex) ? green : red;
             }
-        } else {
-            return;
-        }
+        } 
     }
 
     private void updateInHeadEye() {
