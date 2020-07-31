@@ -20,7 +20,7 @@ public class ColliderHandle : MonoBehaviour
         
     }
 
-    private void deregisterHeadSelectedObject() {
+    private void deRegisterHeadSelectedObject() {
         if (Global.currentState != TrialState.HeadEye) { return; }
         if (EyeOnlyRunner.selectedObj == this.gameObject) {
             EyeOnlyRunner.headSelectedObj = null;
@@ -41,7 +41,7 @@ public class ColliderHandle : MonoBehaviour
         }
         if (other.gameObject.name.Equals("headCursor")) 
         {
-            registerSelectedObject();
+            registerHeadSelectedObject();
         }
     }
 
@@ -54,11 +54,11 @@ public class ColliderHandle : MonoBehaviour
     {
         if (other.gameObject.name.Equals("eyeCursor")) 
         {
-            registerHeadSelectedObject();
+            deRegisterSelectedObject();
         }
         if (other.gameObject.name.Equals("headCursor")) 
         {
-            deregisterHeadSelectedObject();
+            deRegisterHeadSelectedObject();
         }
     }
 }
