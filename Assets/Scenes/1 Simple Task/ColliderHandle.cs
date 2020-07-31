@@ -7,6 +7,7 @@ public class ColliderHandle : MonoBehaviour
     }
 
     private void deRegisterSelectedObject() {
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().white;
         EyeOnlyRunner.selectedObj = null;
         EyeOnlyRunner.headSelectedObj = null;
     }

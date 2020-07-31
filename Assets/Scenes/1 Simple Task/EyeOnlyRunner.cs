@@ -73,7 +73,6 @@ public class EyeOnlyRunner : MonoBehaviour
         if (selectedObj != null) {
             selectedObj.GetComponent<SpriteRenderer>().sprite = blue;
         } else {
-            selectedObj.GetComponent<SpriteRenderer>().sprite = white;
             eyeLockTime = 2;
             confirmTime = 2;
             return;
@@ -83,7 +82,12 @@ public class EyeOnlyRunner : MonoBehaviour
         
         if ( selectedIndex == -1) 
         { 
-            selectedObj.GetComponent<SpriteRenderer>().sprite = white;
+            try 
+            {
+                selectedObj.GetComponent<SpriteRenderer>().sprite = white;
+            }
+            catch {}
+            selectedObj = null;
             eyeLockTime = 2;
             confirmTime = 2;
             return; 
