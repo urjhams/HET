@@ -116,6 +116,18 @@ public class EyeOnlyRunner : MonoBehaviour
             //Debug.Log(timeLeft);
         }
 
+        if (selectedObj)
+        {
+            if (headSelectedObj && headSelectedObj == selectedObj)
+            {
+                selectedObj.GetComponent<SpriteRenderer>().sprite = yellow;
+            }
+            else 
+            {
+                selectedObj.GetComponent<SpriteRenderer>().sprite = blue;
+            }
+        }
+
         // the selected pattern must be one of the pattern in the provided patterns list, so compare to find out its index
         int selectedIndex = System.Array.IndexOf(subFrame, selectedObj);
 
@@ -131,7 +143,7 @@ public class EyeOnlyRunner : MonoBehaviour
             confirmTime -= Time.deltaTime;
             if ( confirmTime <= 0.0) {
                 selectedObj.GetComponent<SpriteRenderer>().sprite = 
-                    (headSelectedIndex == currentRandomIndex) ? green : red;
+                    (selectedIndex == currentRandomIndex) ? green : red;
             }
         }
     }
