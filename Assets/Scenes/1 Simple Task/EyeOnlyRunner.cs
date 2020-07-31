@@ -70,7 +70,14 @@ public class EyeOnlyRunner : MonoBehaviour
         } else {
             //Debug.Log(timeLeft);
         }
-
+        if (selectedObj != null) {
+            selectedObj.GetComponent<SpriteRenderer>().sprite = blue;
+        } else {
+            selectedObj.GetComponent<SpriteRenderer>().sprite = white;
+            eyeLockTime = 2;
+            confirmTime = 2;
+            return;
+        }
         // the selected pattern must be one of the pattern in the provided patterns list, so compare to find out its index
         int selectedIndex = System.Array.IndexOf(subFrame, selectedObj);
         
@@ -79,17 +86,12 @@ public class EyeOnlyRunner : MonoBehaviour
             eye lock time counting down, but will reset and stop the next seps if there is no selected object
         */
         eyeLockTime -= Time.deltaTime;
-        if (selectedObj == null) {
-            eyeLockTime = 2;
-            confirmTime = 2;
-            return;
-        }
 
         /*
             when the lock time is over, start the confirm time
         */
         if (eyeLockTime <= 0) {
-            EyeOnlyRunner.selectedObj.GetComponent<SpriteRenderer>().sprite = 
+            selectedObj.GetComponent<SpriteRenderer>().sprite = 
                 GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().yellow;
 
             confirmTime -= Time.deltaTime;

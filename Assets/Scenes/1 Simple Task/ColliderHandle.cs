@@ -4,18 +4,11 @@ public class ColliderHandle : MonoBehaviour
 {
     private void registerSelectedObject() {
         EyeOnlyRunner.selectedObj = this.gameObject;
-        if (EyeOnlyRunner.headSelectedObj != this.gameObject || EyeOnlyRunner.headSelectedObj == null)
-        {
-            EyeOnlyRunner.selectedObj.GetComponent<SpriteRenderer>().sprite = 
-                GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().blue;
-        }
     }
 
     private void deRegisterSelectedObject() {
         EyeOnlyRunner.selectedObj = null;
         EyeOnlyRunner.headSelectedObj = null;
-        EyeOnlyRunner.selectedObj.GetComponent<SpriteRenderer>().sprite = 
-            GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().white;
     }
 
     private void registerHeadSelectedObject() {
@@ -23,8 +16,6 @@ public class ColliderHandle : MonoBehaviour
         if (Global.currentState != TrialState.HeadEye) { return; }
         if (EyeOnlyRunner.selectedObj == this.gameObject) {
             EyeOnlyRunner.headSelectedObj = this.gameObject;
-            EyeOnlyRunner.selectedObj.GetComponent<SpriteRenderer>().sprite = 
-                GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().yellow;
         }
         
     }
@@ -33,8 +24,6 @@ public class ColliderHandle : MonoBehaviour
         if (Global.currentState != TrialState.HeadEye) { return; }
         if (EyeOnlyRunner.selectedObj == this.gameObject) {
             EyeOnlyRunner.headSelectedObj = null;
-            EyeOnlyRunner.selectedObj.GetComponent<SpriteRenderer>().sprite = 
-                GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().blue;
         }
         
     }
