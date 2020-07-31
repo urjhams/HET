@@ -130,8 +130,8 @@ public class EyeOnlyRunner : MonoBehaviour
         if (selectedIndex == headSelectedIndex) {
             confirmTime -= Time.deltaTime;
             if ( confirmTime <= 0.0) {
-                EyeOnlyRunner.selectedObj.GetComponent<SpriteRenderer>().sprite = 
-                    (selectedIndex == currentRandomIndex) ? green : red;
+                selectedObj.GetComponent<SpriteRenderer>().sprite = 
+                    (headSelectedIndex == currentRandomIndex) ? green : red;
             }
         }
     }

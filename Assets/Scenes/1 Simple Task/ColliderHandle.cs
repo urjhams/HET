@@ -24,6 +24,7 @@ public class ColliderHandle : MonoBehaviour
     private void deRegisterHeadSelectedObject() {
         if (Global.currentState != TrialState.HeadEye) { return; }
         if (EyeOnlyRunner.selectedObj == this.gameObject) {
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().blue;
             EyeOnlyRunner.headSelectedObj = null;
         }
         

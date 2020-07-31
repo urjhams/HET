@@ -5,5 +5,5 @@ public enum TrialState {
 
 public static class Global
 {
-    public static TrialState currentState = TrialState.Eye;
+    public static TrialState currentState = TrialState.HeadEye;
 }
