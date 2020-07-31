@@ -4,8 +4,11 @@ public class ColliderHandle : MonoBehaviour
 {
     private void registerSelectedObject() {
         EyeOnlyRunner.selectedObj = this.gameObject;
-        EyeOnlyRunner.selectedObj.GetComponent<SpriteRenderer>().sprite = 
-            GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().blue;
+        if (EyeOnlyRunner.headSelectedObj != this.gameObject || EyeOnlyRunner.headSelectedObj == null)
+        {
+            EyeOnlyRunner.selectedObj.GetComponent<SpriteRenderer>().sprite = 
+                GameObject.Find("GameRunner").GetComponent<EyeOnlyRunner>().blue;
+        }
     }
 
     private void deRegisterSelectedObject() {
