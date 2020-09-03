@@ -2,13 +2,13 @@
 
 public class EyeOnlyHardRunner : MonoBehaviour
 {
-    // public static GameObject selectedObj;
-    // public static GameObject headSelectedObj;
+    public static GameObject selectedObj;
+    public static GameObject headSelectedObj;
     public GameObject[] objMain;      // The main pattern object
     private GameObjectPatern mainObj;
     public GameObject[] subObjList;
-    private GameObjectPatern[] subObjs;     // pattern objects list
-    // public GameObject[] subFrame;   // the frame object list (which co-responding with pattern objects as container)
+    private GameObjectPatternGroup subObjsGroup;     // pattern objects list
+    public GameObject[] subFrame;   // the frame object list (which co-responding with pattern objects as container)
     public Sprite[] spriteList;     // list of sprites for patterns
 
      public float timeLeft = 30;     // the trial time left, will counted down right from start
@@ -34,19 +34,12 @@ public class EyeOnlyHardRunner : MonoBehaviour
     }
 
     private void fillFromObjectListToPattern() {
-        //Main object
+        //------------------------- Main object set up
         mainObj = new GameObjectPatern();
         mainObj.objects = objMain;
 
-        //Sub objects
-        subObjs = new GameObjectPatern[6] {
-            new GameObjectPatern(),
-            new GameObjectPatern(),
-            new GameObjectPatern(),
-            new GameObjectPatern(),
-            new GameObjectPatern(),
-            new GameObjectPatern(),
-        };
+        //------------------------- Sub objects group set up
+        subObjsGroup = new GameObjectPatternGroup();
 
         var currentIndex = 0;
         var tempArray = new GameObject[4];
@@ -57,7 +50,7 @@ public class EyeOnlyHardRunner : MonoBehaviour
             tempArrayIndex++;
 
             if ((index + 1) % 4 == 0) {
-                subObjs[currentIndex].objects = tempArray;
+                subObjsGroup.patterns[currentIndex].objects = tempArray;
 
                 currentIndex++;
                 tempArray = new GameObject[4];
@@ -99,11 +92,11 @@ public class EyeOnlyHardRunner : MonoBehaviour
         for (int index = 0; index < 6; index++) {
             for (int innerIndex = 0; innerIndex < 4; innerIndex++) {
                 // fill the sprites for objects in pattern object at specific position of sub object
-                subObjs[index].objects[innerIndex].GetComponent<SpriteRenderer>().sprite = spriteList[finalOrderSets[index][innerIndex]];
+                subObjsGroup.patterns[index].objects[innerIndex].GetComponent<SpriteRenderer>().sprite = spriteList[finalOrderSets[index][innerIndex]];
             }
 
             // save the current order into sub object
-                subObjs[index].order = finalOrderSets[index];
+                subObjsGroup.patterns[index].order = finalOrderSets[index];
         }
 
     }
@@ -112,4 +105,15 @@ public class EyeOnlyHardRunner : MonoBehaviour
 class GameObjectPatern {
     public int[] order;
     public GameObject[] objects = new GameObject[4];
+}
+
+class GameObjectPatternGroup {
+    public GameObjectPatern[] patterns = new GameObjectPatern[6] {
+        new GameObjectPatern(),
+        new GameObjectPatern(),
+        new GameObjectPatern(),
+        new GameObjectPatern(),
+        new GameObjectPatern(),
+        new GameObjectPatern(),
+    };
 }
