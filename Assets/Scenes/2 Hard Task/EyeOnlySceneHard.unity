@@ -478,7 +478,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 216753830}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.95, y: 0.02, z: 0}
+  m_LocalPosition: {x: -4.24, y: -0.01, z: 0}
   m_LocalScale: {x: 1.1136059, y: 1.2142645, z: 1.27952}
   m_Children:
   - {fileID: 1507054971}
@@ -1790,7 +1790,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1338505911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1942,7 +1942,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &1420122833
 Rigidbody2D:
   serializedVersion: 4
@@ -3457,24 +3457,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 1998696841}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23d348b8291d4246b189596b6f3517d, type: 3}
+  m_Script: {fileID: 11500000, guid: a0e988da0869a445299713eeed1c2ff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objMain: {fileID: 1507054969}
-  subObj:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  subFrame:
-  - {fileID: 1619632271}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  objMain:
+  - {fileID: 1507054969}
+  - {fileID: 1765534658}
+  - {fileID: 1692896899}
+  - {fileID: 1605155914}
+  subObjList:
+  - {fileID: 1218940233}
+  - {fileID: 2013127953}
+  - {fileID: 572532074}
+  - {fileID: 1426784305}
+  - {fileID: 834291972}
+  - {fileID: 486066848}
+  - {fileID: 1618941153}
+  - {fileID: 284414489}
+  - {fileID: 1038007811}
+  - {fileID: 1751391094}
+  - {fileID: 1460758785}
+  - {fileID: 1989064914}
+  - {fileID: 965774243}
+  - {fileID: 778757911}
+  - {fileID: 249124214}
+  - {fileID: 968651612}
+  - {fileID: 500445564}
+  - {fileID: 204094288}
+  - {fileID: 1106386485}
+  - {fileID: 1768623623}
+  - {fileID: 1686813326}
+  - {fileID: 675166525}
+  - {fileID: 249927710}
+  - {fileID: 1190311205}
   spriteList:
   - {fileID: 21300000, guid: c38837436f9f840cd93fa6c54d9222ac, type: 3}
   - {fileID: 21300000, guid: 915b4d03d662148f29344324abaad28a, type: 3}

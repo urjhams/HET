@@ -162,17 +162,20 @@ public class EyeOnlyRunner : MonoBehaviour
 
     private void fillSubObjectWithRandomSprite() {
         // first, shuffle the order of the sprites array
-        this.reshuffle(spriteList);
+        Utility.reshuffle(spriteList);
 
         // finally, fill them into the pattern objects
         for (int index = 0; index < subObj.Length; index++) {
             subObj[index].GetComponent<SpriteRenderer>().sprite = spriteList[index];
         }
     }
+}
+
+class Utility {
     /// <summary>
     /// shuffle the elements in an array
     /// </summary>
-    void reshuffle<T>(T[] array) {
+    public static void reshuffle<T>(T[] array) {
         for (int index = 0; index < array.Length; index++) {
             T temp = array[index];
             int random = Random.Range(index, array.Length);
