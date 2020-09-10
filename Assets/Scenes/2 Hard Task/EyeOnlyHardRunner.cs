@@ -90,9 +90,9 @@ public class EyeOnlyHardRunner : MonoBehaviour
             //Debug.Log(timeLeft);
         }
 
-        if (selectedPatternSet && selectedPatternSet.objects.Length > 0) 
+        if (selectedPatternSet != null && selectedPatternSet.objects.Length > 0) 
         {
-            if (headSelectedPatternSet && headSelectedPatternSet == selectedPatternSet) 
+            if (headSelectedPatternSet != null && headSelectedPatternSet == selectedPatternSet) 
             {
                 selectedPatternSet.objects[0].transform.parent.gameObject.GetComponent<SpriteRenderer>().sprite = yellow;
             } 
