@@ -75,13 +75,44 @@ public class EyeOnlyHardRunner : MonoBehaviour
             confirmTime -= Time.deltaTime;
             if (confirmTime <= 0.0) 
             {
-                selectedPatternSet.objects[0].transform.parent.gameObject.GetComponent<SpriteRenderer>().sprite = true ? green : red;
+                selectedPatternSet.objects[0].transform.parent.gameObject.GetComponent<SpriteRenderer>().sprite = 
+                    selectedPatternSet.objects.Equals(mainObjPattern.objects) ? green : red;
             }
         }
     }
 
     private void updateInHeadEye() {
+        // trial time count down (in total)
+        timeLeft -= Time.deltaTime;
+        if (timeLeft <= 0) {
+            //TODO: put the trail to end state
+        } else {
+            //Debug.Log(timeLeft);
+        }
 
+        if (selectedPatternSet && selectedPatternSet.objects.Length > 0) 
+        {
+            if (headSelectedPatternSet && headSelectedPatternSet == selectedPatternSet) 
+            {
+                selectedPatternSet.objects[0].transform.parent.gameObject.GetComponent<SpriteRenderer>().sprite = yellow;
+            } 
+            else 
+            {
+                selectedPatternSet.objects[0].transform.parent.gameObject.GetComponent<SpriteRenderer>().sprite = blue;
+            }
+
+            confirmTime -= Time.deltaTime;
+            if (confirmTime <= 0.0)
+            {
+                selectedPatternSet.objects[0].transform.parent.gameObject.GetComponent<SpriteRenderer>().sprite = 
+                    selectedPatternSet.objects.Equals(mainObjPattern.objects) ? green : red;
+            }
+        }
+        else
+        {
+            confirmTime = 2;
+            return;
+        }
     }
 
     private void fillFromObjectListToPattern() {
