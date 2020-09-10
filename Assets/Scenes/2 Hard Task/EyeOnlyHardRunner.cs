@@ -65,7 +65,19 @@ public class EyeOnlyHardRunner : MonoBehaviour
             return;
         }
 
-        
+        //eye lock time counting down, but will reset and stop the next seps if there is no selected object
+        eyeLockTime -= Time.deltaTime;
+
+        if (eyeLockTime <= 0) 
+        {
+            selectedPatternSet.objects[0].transform.parent.gameObject.GetComponent<SpriteRenderer>().sprite = yellow;
+
+            confirmTime -= Time.deltaTime;
+            if (confirmTime <= 0.0) 
+            {
+                selectedPatternSet.objects[0].transform.parent.gameObject.GetComponent<SpriteRenderer>().sprite = true ? green : red;
+            }
+        }
     }
 
     private void updateInHeadEye() {

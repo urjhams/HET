@@ -104,7 +104,8 @@ public class EyeOnlyRunner : MonoBehaviour
             selectedObj.GetComponent<SpriteRenderer>().sprite =  yellow;
 
             confirmTime -= Time.deltaTime;
-            if (confirmTime <= 0.0) {
+            if (confirmTime <= 0.0) 
+            {
                 selectedObj.GetComponent<SpriteRenderer>().sprite = (selectedIndex == currentRandomIndex) ? green : red;
             }
         } 
