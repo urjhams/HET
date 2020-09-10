@@ -64,6 +64,8 @@ public class EyeOnlyHardRunner : MonoBehaviour
             confirmTime = 2;
             return;
         }
+
+        
     }
 
     private void updateInHeadEye() {
@@ -135,6 +137,7 @@ public class EyeOnlyHardRunner : MonoBehaviour
             // save the current order into sub object
             subObjsGroup.patterns[index].order = finalOrderSets[index];
 
+            // Apply patterns into objects in subFrame array
             try 
             {
                 subFrame[index].GetComponent<ColliderHandleHard>().selectedPattern = subObjsGroup.patterns[index];

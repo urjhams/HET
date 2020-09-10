@@ -10,7 +10,7 @@ public static class Global
     public static TrialState currentState = TrialState.HeadEye;
 
     public class GameObjectPattern {
-    public int[] order;
+        public int[] order;
         public GameObject[] objects = new GameObject[4];
     }
 

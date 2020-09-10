@@ -83,7 +83,7 @@ public class EyeOnlyRunner : MonoBehaviour
         // the selected pattern must be one of the pattern in the provided patterns list, so compare to find out its index
         int selectedIndex = System.Array.IndexOf(subFrame, selectedObj);
         
-        if ( selectedIndex == -1) 
+        if (selectedIndex == -1) 
         { 
             try 
             {
