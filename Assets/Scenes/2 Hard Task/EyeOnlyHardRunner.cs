@@ -2,12 +2,12 @@
 
 public class EyeOnlyHardRunner : MonoBehaviour
 {
-    public static GameObject selectedObj;
-    public static GameObject headSelectedObj;
-    public GameObject[] objMain;      // The main pattern object
-    private GameObjectPatern mainObj;
+    public static Global.GameObjectPattern selectedPatternSet;
+    public static Global.GameObjectPattern headSelectedPatternSet;
+    public GameObject[] mainObj;      // The main pattern object
+    private Global.GameObjectPattern mainObjPattern;
     public GameObject[] subObjList;
-    private GameObjectPatternGroup subObjsGroup;     // pattern objects list
+    private Global.GameObjectPatternGroup subObjsGroup;     // pattern objects list
     public GameObject[] subFrame;   // the frame object list (which co-responding with pattern objects as container)
     public Sprite[] spriteList;     // list of sprites for patterns
 
@@ -33,13 +33,50 @@ public class EyeOnlyHardRunner : MonoBehaviour
         fillObjectsWithSprites();
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!Application.isEditor)
+            {
+                Application.Quit();
+            }
+        }
+
+        switch (Global.currentState) {
+            case TrialState.Eye:
+                updateInEyeOnly();
+                break;
+            case TrialState.HeadEye:
+                updateInHeadEye();
+                break;
+        }
+    }
+
+    private void updateInEyeOnly() {
+        if (selectedPatternSet != null && selectedPatternSet.objects.Length > 0) 
+        {
+            selectedPatternSet.objects[0].transform.parent.gameObject.GetComponent<SpriteRenderer>().sprite = blue;
+        } 
+        else 
+        {
+            eyeLockTime = 2;
+            confirmTime = 2;
+            return;
+        }
+    }
+
+    private void updateInHeadEye() {
+
+    }
+
     private void fillFromObjectListToPattern() {
         //------------------------- Main object set up
-        mainObj = new GameObjectPatern();
-        mainObj.objects = objMain;
+        mainObjPattern = new Global.GameObjectPattern();
+        mainObjPattern.objects = mainObj;
 
         //------------------------- Sub objects group set up
-        subObjsGroup = new GameObjectPatternGroup();
+        subObjsGroup = new Global.GameObjectPatternGroup();
 
         var currentIndex = 0;
         var tempArray = new GameObject[4];
@@ -84,10 +121,10 @@ public class EyeOnlyHardRunner : MonoBehaviour
         int randomIndex = random.Next(0,finalOrderSets.Length - 1);     // get the random index
         for (int index = 0; index < 4; index++) {
             // apply the random set of sprite pattern into main Object
-            mainObj.objects[index].GetComponent<SpriteRenderer>().sprite = spriteList[finalOrderSets[randomIndex][index]];
+            mainObjPattern.objects[index].GetComponent<SpriteRenderer>().sprite = spriteList[finalOrderSets[randomIndex][index]];
         }
         // save the order into main object
-        mainObj.order = finalOrderSets[randomIndex];
+        mainObjPattern.order = finalOrderSets[randomIndex];
         
         for (int index = 0; index < 6; index++) {
             for (int innerIndex = 0; innerIndex < 4; innerIndex++) {
@@ -96,24 +133,16 @@ public class EyeOnlyHardRunner : MonoBehaviour
             }
 
             // save the current order into sub object
-                subObjsGroup.patterns[index].order = finalOrderSets[index];
+            subObjsGroup.patterns[index].order = finalOrderSets[index];
+
+            try 
+            {
+                subFrame[index].GetComponent<ColliderHandleHard>().selectedPattern = subObjsGroup.patterns[index];
+            } 
+            catch 
+            {
+                Debug.Log("Cannot apply for ColliderHandleHard of subframe object at index " + index);
+            }
         }
-
     }
-}
-
-class GameObjectPatern {
-    public int[] order;
-    public GameObject[] objects = new GameObject[4];
-}
-
-class GameObjectPatternGroup {
-    public GameObjectPatern[] patterns = new GameObjectPatern[6] {
-        new GameObjectPatern(),
-        new GameObjectPatern(),
-        new GameObjectPatern(),
-        new GameObjectPatern(),
-        new GameObjectPatern(),
-        new GameObjectPatern(),
-    };
 }

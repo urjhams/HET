@@ -2,30 +2,31 @@
 
 public class ColliderHandleHard : MonoBehaviour
 {
+    public Global.GameObjectPattern selectedPattern;
     private void registerSelectedObject() {
-        EyeOnlyHardRunner.selectedObj = this.gameObject;
+        EyeOnlyHardRunner.selectedPatternSet = selectedPattern;
     }
 
     private void deRegisterSelectedObject() {
         this.gameObject.GetComponent<SpriteRenderer>().sprite = GameObject.Find("GameRunner").GetComponent<EyeOnlyHardRunner>().white;
-        EyeOnlyHardRunner.selectedObj = null;
-        EyeOnlyHardRunner.headSelectedObj = null;
+        EyeOnlyHardRunner.selectedPatternSet = null;
+        EyeOnlyHardRunner.headSelectedPatternSet = null;
     }
 
     private void registerHeadSelectedObject() {
         // only work if in head-eye mode and this is the selected object already
         if (Global.currentState != TrialState.HeadEye) { return; }
-        if (EyeOnlyHardRunner.selectedObj == this.gameObject) {
-            EyeOnlyHardRunner.headSelectedObj = this.gameObject;
+        if (EyeOnlyHardRunner.selectedPatternSet == selectedPattern) {
+            EyeOnlyHardRunner.headSelectedPatternSet = selectedPattern;
         }
         
     }
 
     private void deRegisterHeadSelectedObject() {
         if (Global.currentState != TrialState.HeadEye) { return; }
-        if (EyeOnlyHardRunner.selectedObj == this.gameObject) {
+        if (EyeOnlyHardRunner.selectedPatternSet == selectedPattern) {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = GameObject.Find("GameRunner").GetComponent<EyeOnlyHardRunner>().blue;
-            EyeOnlyHardRunner.headSelectedObj = null;
+            EyeOnlyHardRunner.headSelectedPatternSet = null;
         }
         
     }

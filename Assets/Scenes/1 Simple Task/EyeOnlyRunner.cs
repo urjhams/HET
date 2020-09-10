@@ -70,9 +70,12 @@ public class EyeOnlyRunner : MonoBehaviour
         // } else {
         //     //Debug.Log(timeLeft);
         // }
-        if (selectedObj != null) {
+        if (selectedObj != null) 
+        {
             selectedObj.GetComponent<SpriteRenderer>().sprite = blue;
-        } else {
+        } 
+        else 
+        {
             eyeLockTime = 2;
             confirmTime = 2;
             return;

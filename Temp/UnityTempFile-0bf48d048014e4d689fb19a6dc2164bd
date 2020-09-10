@@ -298,7 +298,7 @@
 "Assets/Scenes/1 Simple Task/EyeHandler.cs"
 "Assets/Scenes/1 Simple Task/EyeOnlyRunner.cs"
 "Assets/Scenes/1 Simple Task/HeadHandler.cs"
-"Assets/Scenes/2 Hard Task/EyeHandlerHard.cs"
+"Assets/Scenes/2 Hard Task/ColliderHandleHard.cs"
 "Assets/Scenes/2 Hard Task/EyeOnlyHardRunner.cs"
 "Assets/Scenes/Global/Global.cs"
 "Assets/Scenes/Sample/EyeBehaviour.cs"
