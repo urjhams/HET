@@ -31,6 +31,10 @@ public class EyeOnlyHardRunner : MonoBehaviour
     {
         fillFromObjectListToPattern();
         fillObjectsWithSprites();
+
+        if (Global.currentState == TrialState.Eye) {
+            GameObject.Find("headCursor").SetActive(false);
+        }
     }
 
     void Update()
@@ -75,8 +79,10 @@ public class EyeOnlyHardRunner : MonoBehaviour
             confirmTime -= Time.deltaTime;
             if (confirmTime <= 0.0) 
             {
+                var selectedPatternSetSprite = selectedPatternSet.convertToSprites();
+                var mainObjPatternSprite = mainObjPattern.convertToSprites();
                 selectedPatternSet.objects[0].transform.parent.gameObject.GetComponent<SpriteRenderer>().sprite = 
-                    selectedPatternSet.objects.Equals(mainObjPattern.objects) ? green : red;
+                    selectedPatternSetSprite.Equals(mainObjPatternSprite) ? green : red;
             }
         }
     }
