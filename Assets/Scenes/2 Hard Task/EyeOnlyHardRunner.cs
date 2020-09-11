@@ -79,12 +79,28 @@ public class EyeOnlyHardRunner : MonoBehaviour
             confirmTime -= Time.deltaTime;
             if (confirmTime <= 0.0) 
             {
-                var selectedPatternSetSprite = selectedPatternSet.convertToSprites();
-                var mainObjPatternSprite = mainObjPattern.convertToSprites();
+                // TODO: somehow this is not work, maybe try to get the sprite name array insted
+                // var selectedPatternSetSprite = selectedPatternSet.convertToSprites();
+                // var mainObjPatternSprite = mainObjPattern.convertToSprites();
+                // selectedPatternSet.objects[0].transform.parent.gameObject.GetComponent<SpriteRenderer>().sprite = 
+                //     selectedPatternSetSprite.Equals(mainObjPatternSprite) ? green : red;
                 selectedPatternSet.objects[0].transform.parent.gameObject.GetComponent<SpriteRenderer>().sprite = 
-                    selectedPatternSetSprite.Equals(mainObjPatternSprite) ? green : red;
+                    samePattern(selectedPatternSet, mainObjPattern) ? green : red;
             }
         }
+    }
+
+    private bool samePattern(Global.GameObjectPattern pattarnA, Global.GameObjectPattern patternB) {
+        bool result = true;
+        for (int index = 0; index < pattarnA.objects.Length; index++) {
+            var spriteA = pattarnA.objects[index].GetComponent<SpriteRender>().sprite.name;
+            var spriteB = patternB.objects[index].GetComponent<SpriteRender>().sprite.name;
+            if (!(spriteA.trim().Equals(spriteB))) {
+                result = false;
+                break;
+            }
+        }
+        return result;
     }
 
     private void updateInHeadEye() {
