@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
+using Tobii.Research;
+using UnityEngine.SceneManagement;
 
 public class EyeOnlyRunner : MonoBehaviour
 {
@@ -26,8 +30,22 @@ public class EyeOnlyRunner : MonoBehaviour
     public Sprite green;
     public Sprite red;
 
+    [SerializeField] private GameObject countDownPanel;
+
+    public string lastName;
+    public string firstName;
+    public string courseStudy;
+    public string matriculationNo;
+
+    public GameObject last_InputField;
+    public GameObject firstName_InputField;
+    public GameObject course_InputField;
+    public GameObject matriculation_InputField;
+
+
     void Start()
     {
+        StartCoroutine(SessionOver());
         // Cursor.visible = true;
 
         // fill random pattern sprites
@@ -60,6 +78,39 @@ public class EyeOnlyRunner : MonoBehaviour
                 updateInHeadEye();
                 break;
         }
+    }
+
+    // Countdown timer
+    IEnumerator SessionOver()
+    {
+        yield return new WaitForSeconds(20);
+        EyeTrackingOperations.Terminate();
+        countDownPanel.SetActive(true);
+    }
+
+    // Save user details
+    public void getDetails()
+    {
+        /*lastName = last_InputField.GetComponent<Text>().text;
+        firstName = firstName_InputField.GetComponent<Text>().text;
+        courseStudy = course_InputField.GetComponent<Text>().text;
+        matriculationNo = matriculation_InputField.GetComponent<Text>().text;
+        CSVManager.appendtoFile(new string[6] {
+            lastName,
+            firstName,
+            courseStudy,
+            matriculationNo,
+            "2",
+            "4"
+        });*/
+        Debug.Log("Details updated...");
+
+    }
+
+    // change to the main menu
+    public void changeScene(string scene)
+    { 
+        SceneManager.LoadScene(scene);
     }
 
     private void updateInEyeOnly() {

@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Tobii.Research;
+using UnityEngine.SceneManagement;
 
 public class EyeOnlyHardRunner : MonoBehaviour
 {
@@ -27,13 +31,16 @@ public class EyeOnlyHardRunner : MonoBehaviour
     public Sprite green;
     public Sprite red;
 
+    [SerializeField] private GameObject countDownPanel;
+
     void Start()
     {
+        StartCoroutine(SessionOver());
         fillFromObjectListToPattern();
         fillObjectsWithSprites();
 
         if (Global.currentState == TrialState.Eye) {
-            GameObject.Find("headCursor").SetActive(false);
+           // GameObject.Find("headCursor").SetActive(false);
         }
     }
 
@@ -55,6 +62,20 @@ public class EyeOnlyHardRunner : MonoBehaviour
                 updateInHeadEye();
                 break;
         }
+    }
+
+
+    IEnumerator SessionOver()
+    {
+        yield return new WaitForSeconds(60);
+        EyeTrackingOperations.Terminate();
+        countDownPanel.SetActive(true);
+    }
+
+    // change to the main menu
+    public void changeScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 
     private void updateInEyeOnly() {
@@ -80,10 +101,10 @@ public class EyeOnlyHardRunner : MonoBehaviour
             if (confirmTime <= 0.0) 
             {
                 // TODO: somehow this is not work, maybe try to get the sprite name array insted
-                // var selectedPatternSetSprite = selectedPatternSet.convertToSprites();
-                // var mainObjPatternSprite = mainObjPattern.convertToSprites();
-                // selectedPatternSet.objects[0].transform.parent.gameObject.GetComponent<SpriteRenderer>().sprite = 
-                //     selectedPatternSetSprite.Equals(mainObjPatternSprite) ? green : red;
+                 var selectedPatternSetSprite = selectedPatternSet.convertToSprites();
+                 var mainObjPatternSprite = mainObjPattern.convertToSprites();
+                 selectedPatternSet.objects[0].transform.parent.gameObject.GetComponent<SpriteRenderer>().sprite = 
+                     selectedPatternSetSprite.Equals(mainObjPatternSprite) ? green : red;
                 selectedPatternSet.objects[0].transform.parent.gameObject.GetComponent<SpriteRenderer>().sprite = 
                     samePattern(selectedPatternSet, mainObjPattern) ? green : red;
             }
@@ -93,9 +114,9 @@ public class EyeOnlyHardRunner : MonoBehaviour
     private bool samePattern(Global.GameObjectPattern pattarnA, Global.GameObjectPattern patternB) {
         bool result = true;
         for (int index = 0; index < pattarnA.objects.Length; index++) {
-            var spriteA = pattarnA.objects[index].GetComponent<SpriteRender>().sprite.name;
-            var spriteB = patternB.objects[index].GetComponent<SpriteRender>().sprite.name;
-            if (!(spriteA.trim().Equals(spriteB))) {
+            var spriteA = pattarnA.objects[index].GetComponent<SpriteRenderer>().sprite.name;
+            var spriteB = patternB.objects[index].GetComponent<SpriteRenderer>().sprite.name;
+            if (!(spriteA.Trim().Equals(spriteB))) {
                 result = false;
                 break;
             }
